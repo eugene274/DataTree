@@ -22,8 +22,8 @@ ROOT_GENERATE_DICTIONARY(G__DataTreeEvent DataTreeEvent.h LINKDEF LinkDef/DataTr
 
 #---Create a shared library with geneated dictionary
 #add_library(DataTreeTrack SHARED DataTreeTrack.cxx)
-add_library(DataTreeEvent SHARED DataTreeEvent.cxx DataTreeTrack.cxx DataTreePSDSection.cxx DataTreePSDModule.cxx DataTreeTOFHit.cxx DataTreeV0Candidate.cxx DataTreeMCTrack.cxx DataTreeTrigger.cxx DataTreeBPD.cxx G__DataTreeEvent.cxx)
-target_link_libraries(DataTreeEvent ${ROOT_LIBRARIES})
+add_library(DataTree SHARED DataTreeEvent.cxx DataTreeTrack.cxx DataTreePSDSection.cxx DataTreePSDModule.cxx DataTreeTOFHit.cxx DataTreeV0Candidate.cxx DataTreeMCTrack.cxx DataTreeTrigger.cxx DataTreeBPD.cxx G__DataTreeEvent.cxx)
+target_link_libraries(DataTree ${ROOT_LIBRARIES})
 
 #---Create  a main program using the library
 #add_executable(Main MainEvent.cxx)
