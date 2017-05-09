@@ -1,6 +1,6 @@
-#############################################################################
+
 DataTree structure of data. ROOT (v5 or v6) is needed to run this program.
-#############################################################################
+
 INSTALLATION:
 cd <DataTree directory>/
 
@@ -24,4 +24,4 @@ root -l
 
 Load shared library:
 gSystem->Load("libDataTree.so")
-#############################################################################
+
