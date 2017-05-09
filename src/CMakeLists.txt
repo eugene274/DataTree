@@ -1,5 +1,5 @@
 # CMakeLists.txt for DataTree package. It creates a library with dictionary and a main program
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 2.0.8 FATAL_ERROR)
 project(DataTree)
 
 # You need to tell CMake where to find the ROOT installation. This can be done in a number of ways:
@@ -18,11 +18,20 @@ add_definitions(${ROOT_CXX_FLAGS})
 
 ROOT_GENERATE_DICTIONARY(G__DataTreeEvent DataTreeEvent.h LINKDEF LinkDef/DataTreeEventLinkDef.h)
 
-#ROOT_GENERATE_DICTIONARY(G__DataTreeTrack DataTreeTrack.h LINKDEFTRACK ./LinkDef/DataTreeTrackLinkDef.h)
-
 #---Create a shared library with geneated dictionary
 #add_library(DataTreeTrack SHARED DataTreeTrack.cxx)
-add_library(DataTree SHARED DataTreeEvent.cxx DataTreeTrack.cxx DataTreePSDSection.cxx DataTreePSDModule.cxx DataTreeTOFHit.cxx DataTreeV0Candidate.cxx DataTreeMCTrack.cxx DataTreeTrigger.cxx DataTreeBPD.cxx G__DataTreeEvent.cxx)
+add_library(DataTree SHARED 
+DataTreeEvent.cxx
+DataTreeTrack.cxx
+DataTreePSDSection.cxx
+DataTreePSDModule.cxx
+DataTreeTOFHit.cxx
+DataTreeV0Candidate.cxx
+DataTreeMCTrack.cxx
+DataTreeTrigger.cxx
+DataTreeBPD.cxx
+G__DataTreeEvent.cxx)
+
 target_link_libraries(DataTree ${ROOT_LIBRARIES})
 
 #---Create  a main program using the library
