@@ -1,5 +1,5 @@
 # CMakeLists.txt for DataTree package. It creates a library with dictionary and a main program
-cmake_minimum_required(VERSION 2.0.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 2.4 FATAL_ERROR)
 project(DataTree)
 
 # You need to tell CMake where to find the ROOT installation. This can be done in a number of ways:
