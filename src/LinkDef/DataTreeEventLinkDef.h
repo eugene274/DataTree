@@ -16,4 +16,6 @@
 
 #pragma link C++ class DataTreeConverterNA61+;
 
+#pragma link C++ function DataTreeEventQA;
+
 #endif
