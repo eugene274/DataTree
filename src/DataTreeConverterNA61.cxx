@@ -8,11 +8,6 @@ using std::endl;
 using std::ifstream;
 
 #include "TDirectory.h"
-#include "DataTreeEvent.h"
-#include "DataTreeTrack.h"
-#include "TString.h"
-#include "TChain.h"
-#include "TTree.h"
 
 //=================================================================> MAIN <===============================================================
 DataTreeConverterNA61::DataTreeConverterNA61()

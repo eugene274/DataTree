@@ -16,7 +16,7 @@ include(${ROOT_USE_FILE})
 include_directories(${CMAKE_SOURCE_DIR} ${ROOT_INCLUDE_DIRS})
 add_definitions(${ROOT_CXX_FLAGS})
 
-ROOT_GENERATE_DICTIONARY(G__DataTreeEvent DataTreeEvent.h LINKDEF LinkDef/DataTreeEventLinkDef.h)
+ROOT_GENERATE_DICTIONARY(G__DataTreeEvent DataTreeConverterNA61.h DataTreeEvent.h LINKDEF LinkDef/DataTreeEventLinkDef.h)
 
 #---Create a shared library with geneated dictionary
 #add_library(DataTreeTrack SHARED DataTreeTrack.cxx)
@@ -30,6 +30,7 @@ DataTreeV0Candidate.cxx
 DataTreeMCTrack.cxx
 DataTreeTrigger.cxx
 DataTreeBPD.cxx
+DataTreeConverterNA61.cxx
 G__DataTreeEvent.cxx)
 
 target_link_libraries(DataTree ${ROOT_LIBRARIES})

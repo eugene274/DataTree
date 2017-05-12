@@ -5,6 +5,10 @@
 #include "TChain.h"
 #include "TString.h"
 #include "TFile.h"
+#include "DataTreeEvent.h"
+
+using namespace std;
+
 //#include "DataTreeEvent.h"
 //#include "/lustre/nyx/hades/user/parfenov/Soft/CBMRoot/src/analysis/flow/DataTree/DataTreeEvent.h"
 bool SaveOutput = true;

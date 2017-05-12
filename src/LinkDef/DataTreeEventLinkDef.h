@@ -14,4 +14,6 @@
 #pragma link C++ class DataTreeTrigger+;
 #pragma link C++ class DataTreeBPD+;
 
+#pragma link C++ class DataTreeConverterNA61+;
+
 #endif
