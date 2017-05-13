@@ -161,7 +161,7 @@ void Init_Histograms()
 	hCharge   = new TH1D("hCharge","charge",20,-10.,10.);
 	
 	for (int i=0;i<4;i++){
-		hp[4] = new TH1D(Form("hp%i",i),Form("Momentum %i",i),nbins,p_low,p_high); //px,py,pz,p;
+		hp[i] = new TH1D(Form("hp%i",i),Form("Momentum %i",i),nbins,p_low,p_high); //px,py,pz,p;
 	}
 	//hqpVSdEdx;
 	hPdEdx = new TH2D("hPdEdx", "dE/dx: qp", 500, -10, 10, 500, 0, 4);
