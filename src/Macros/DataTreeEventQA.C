@@ -117,9 +117,9 @@ void Init_Histograms()
     hMCTrackKaonPtY = new TH2D("hMCTrackKaonPtY", "MC kaon Y : pT", nbins, y_low, y_high, nbins, pt_low, pt_high);
     
     
-    hTrackPtEta = new TH2D("hTrackPtEta", "pT : eta", nbins, pt_low, pt_high, nbins, eta_low, eta_high);
+    hTrackPtEta = new TH2D("hTrackPtEta", "pT : eta", nbins, eta_low, eta_high, nbins, pt_low, pt_high);
     hTrackPtPhi = new TH2D("hTrackPtPhi", "pT : phi", nbins, pt_low, pt_high, nbins, phi_low, phi_high);
-    hTrackEtaPhi = new TH2D("hTrackEtaPhi", "eta : phi", nbins, eta_low, eta_high, nbins, phi_low, phi_high);
+    hTrackEtaPhi = new TH2D("hTrackEtaPhi", "eta : phi", nbins, phi_low, phi_high, nbins, eta_low, eta_high);
     hMatchTrackPt = new TH2D("hMatchTrackPt", "pT reco : sim", nbins, pt_low, pt_high, nbins, pt_low, pt_high);
     hMatchTrackEta = new TH2D("hMatchTrackEta", "eta reco : sim", nbins, eta_low, eta_high, nbins, eta_low, eta_high);
     hMatchTrackPhi = new TH2D("hMatchTrackPhi", "phi reco : sim", nbins, phi_low, phi_high, nbins, phi_low, phi_high);
@@ -252,9 +252,9 @@ void Fill_Histograms(int type=0)
         hNhitPot  -> Fill (track->GetNofHitsPotential(0,0));
 	flag = track->GetFlag(0);
 	Nstations = track->GetNStations(0);
-	hTrackPtEta -> Fill(pT,eta);
+	hTrackPtEta -> Fill(eta,pT);
 	hTrackPtPhi -> Fill(pT,phi);
-	hTrackEtaPhi -> Fill(eta,phi);
+	hTrackEtaPhi -> Fill(phi,eta);
 	for (Int_t j=0;j<3;++j){
 		hTrackDCA[j]->Fill(track->GetDCAComponent(0,j));
 		if (DTEvent->GetVertexQuality(1)==0) hCutsTrackDCA[j][0]->Fill(track->GetDCAComponent(0,j));
@@ -265,7 +265,7 @@ void Fill_Histograms(int type=0)
 	hTrackChiSq ->Fill(track->GetChiSq(0));
 	hTrackCharge->Fill(track->GetCharge(0));        
     
-	hPdEdx -> Fill ( charge*pT*TMath::CosH(eta), dEdx );
+	hPdEdx -> Fill ( charge*TMath::Log10(pT*TMath::CosH(eta)), dEdx );
 	Mult++;
 	
 	}
