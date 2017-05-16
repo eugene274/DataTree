@@ -65,6 +65,10 @@ void DataTreeConverterNA61::DataTreeEvent_Init()
     {
 	DTEvent -> AddBPD();
     }
+	for (int i=0;i<nTriggers_Simple;i++)
+	{
+	DTEvent -> AddWFA();
+	}
 }
 //--------------------------------------------------------------------------------------------------
 void DataTreeConverterNA61::OutputTree_Init()
