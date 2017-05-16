@@ -12,6 +12,7 @@
 #include "DataTreeMCTrack.h"
 #include "DataTreeTrigger.h"
 #include "DataTreeBPD.h"
+#include "DataTreeWFA.h"
 
 const int nV0Types = 3;
 const int V0Pdg[nV0Types] = {3122,-3122,310};
@@ -167,6 +168,11 @@ public:
     DataTreeBPD* GetBPD(int idx){return (DataTreeBPD*)arrBPDs->At(idx);}
     DataTreeBPD* GetLastBPD(){return (DataTreeBPD*)arrBPDs->At(nBPDs-1);}
     void AddBPD(){TClonesArray &arr = *arrBPDs; new(arr[nBPDs]) DataTreeBPD(nBPDs); nBPDs++;}
+
+    int GetNWFAs(){return nWFAs;}
+    DataTreeWFA* GetWFA(int idx){return (DataTreeWFA*)arrWFAs->At(idx);}
+    DataTreeWFA* GetLastWFA(){return (DataTreeWFA*)arrWFAs->At(nWFAs-1);}
+    void AddWFA(){TClonesArray &arr = *arrWFAs; new (arr[nWFAs]) DataTreeWFA(nWFAs); nWFAs++;}
     
 private:
 
@@ -214,6 +220,9 @@ private:
     
     int nBPDs;				//Number of BPDs
     TClonesArray* arrBPDs;		//BPDs
+
+    int nWFAs;              //Number of WFA
+    TClonesArray* arrWFAs;  //WFAs
     
     //END NEW
   

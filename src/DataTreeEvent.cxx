@@ -9,6 +9,7 @@
 #include "DataTreeMCTrack.h"
 #include "DataTreeTrigger.h"
 #include "DataTreeBPD.h"
+#include "DataTreeWFA.h"
 
 DataTreeEvent::DataTreeEvent() : TObject(),
 ProcessFlag(false),
@@ -27,7 +28,9 @@ nMCTracks(0),
 arrTriggers (new TClonesArray("DataTreeTrigger")),
 nTriggers(0),
 arrBPDs (new TClonesArray("DataTreeBPD")),
-nBPDs(0)
+nBPDs(0),
+arrWFAs (new TClonesArray("DataTreeWFA")),
+nWFAs(0)
 {
 //     std::cout << "Constructor" << std::endl;
 }

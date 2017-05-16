@@ -262,6 +262,9 @@ void DataTreeConverterNA61::Chain_Init()
 //     fChain->SetBranchAddress("TPC_track_EnergyClusters_TPCVgap",&TPC_track_EnergyClusters_TPCVgap);
 
 	fChain->SetBranchAddress("isTriggers_Combined",&isTriggers_Combined);
+
+	fChain->SetBranchAddress("WFA_TimeStructure",&WFA_TimeStructure);
+	fChain->SetBranchAddress("WFA_NumberOfSignalHits",&WFA_NumberOfSignalHits);
 }
 
 //=================================================================> EXEC <===============================================================

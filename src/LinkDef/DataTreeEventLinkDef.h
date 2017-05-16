@@ -13,6 +13,7 @@
 #pragma link C++ class DataTreeMCTrack+;
 #pragma link C++ class DataTreeTrigger+;
 #pragma link C++ class DataTreeBPD+;
+#pragma link C++ class DataTreeWFA+;
 
 #pragma link C++ class DataTreeConverterNA61+;
 

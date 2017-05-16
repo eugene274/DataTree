@@ -30,6 +30,7 @@ DataTreeV0Candidate.cxx
 DataTreeMCTrack.cxx
 DataTreeTrigger.cxx
 DataTreeBPD.cxx
+DataTreeWFA.cxx
 DataTreeConverterNA61.cxx
 G__DataTreeEvent.cxx)
 

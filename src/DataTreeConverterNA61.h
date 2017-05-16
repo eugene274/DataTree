@@ -52,13 +52,14 @@ private:
     static const int nUndefinedValue = -999;
     
     static const int nRawReco = 2;
-    static const int nTriggers_Simple = 5;
+    static const int nTriggers_Simple = 6;
     static const int nTriggers = 6;
     static const int nBPD = 3;
     static const int nBPDcomponents = 3;
     static const int nPSD_Modules = 45;
     static const int nPSD_Sections = 10;
     static const int nTPC_Tracks = 2000;
+    static const int nMaxWFAsignals = 2000;
 
 	static const int nTriggers_Combined = 4;
     
@@ -240,6 +241,9 @@ private:
     double TPC_primary_vtx_track_EnergyClusters_TPCVgap[nTPC_Tracks];
 
 	bool isTriggers_Combined[nRawReco][nTriggers_Combined];
+
+    double WFA_TimeStructure[nTriggers_Simple][nMaxWFAsignals];
+    int    WFA_NumberOfSignalHits[nTriggers_Simple];
     
 //     float TPC_track_pT[nTPC_Tracks];
 //     float TPC_track_eta[nTPC_Tracks];
