@@ -303,6 +303,14 @@ void DataTreeConverterNA61::Read_Event()
     {
 	DTEvent -> GetBPD(i) -> SetPosition(BPD_Position[1][i][0],BPD_Position[1][i][1],BPD_Position[1][i][2]);
     }
+
+	for (int i=0;i<nTriggers_Simple;i++)
+    {
+		DTEvent -> GetWFA(i) -> SetNHits(i,WFA_NumberOfSignalHits[i]);
+		for (int j=0;j<nMaxWFAsignals;j++){
+			DTEvent -> GetWFA(i) -> SetTime(i,j,WFA_TimeStructure[i][j]);
+		}
+    }
     
     DTEvent -> SetVertexPosition(Main_Vertex_X,Main_Vertex_Y,Main_Vertex_Z,0);
     DTEvent -> SetVertexPosition(Primary_Vertex_X,Primary_Vertex_Y,Primary_Vertex_Z,1);
