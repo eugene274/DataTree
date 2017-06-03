@@ -20,7 +20,7 @@ public:
     double GetTime(int idx, int jdx){return TimeWFA[idx][jdx];}
 
     void SetTime(int idx, int jdx, double fValue){TimeWFA[idx][jdx] = fValue;}
-    void SetNHits(int idx, int fValue){NHits[idx] = fValue;}
+    void SetNHits(int idx, int iValue){NHits[idx] = iValue;}
     
     
 private:    
@@ -28,7 +28,7 @@ private:
     
     double TimeWFA[6][2000];
     int    NHits[6];
-    int id;
+    int    id;
     
     ClassDefNV(DataTreeWFA, 1)
 };

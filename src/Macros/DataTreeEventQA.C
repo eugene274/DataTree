@@ -12,6 +12,8 @@ using namespace std;
 //#include "DataTreeEvent.h"
 //#include "/lustre/nyx/hades/user/parfenov/Soft/CBMRoot/src/analysis/flow/DataTree/DataTreeEvent.h"
 bool SaveOutput = true;
+const int nMaxWFAsignals = 2000;
+const int n_trigg = 2;
 TString fInputDir;
 TString fOutputDir;
 TChain* fChain;
@@ -76,6 +78,7 @@ TH1D* hChi2NDF;
 TH1D* hCharge;
 TH1D* hp[4]; //px,py,pz,p;
 TH2D* hPdEdx;
+TH1D* hWFA;
 //TH1D* hqpVSdEdx;
 ////////////////////////
 void Init_Histograms()
@@ -165,6 +168,8 @@ void Init_Histograms()
 	}
 	//hqpVSdEdx;
 	hPdEdx = new TH2D("hPdEdx", "dE/dx: qp", 500, -10, 10, 500, 0, 4);
+
+	hWFA = new TH1D("hWFA", "WFA All",6000,-30000.,30000.);
     
 }
 void Init_Chain(TChain* InChain)
@@ -193,6 +198,14 @@ void Fill_Histograms(int type=0)
     double B = DTEvent -> GetImpactParameter();
 	double Ntrig = DTEvent -> GetNTriggers();
 	double NBPD  = DTEvent -> GetNBPDs();
+
+
+	for (Int_t i_trigg=0;i_trigg<n_trigg;i_trigg++){
+		for (Int_t j=0;j<nMaxWFAsignals;j++){
+			hWFA->Fill(DTEvent->GetWFA(i_trigg)->GetTime(i_trigg,j));
+		}
+	}
+
     
     //hMreco -> Fill(Mreco);
     hMsim -> Fill(Msim);
@@ -275,7 +288,8 @@ void Fill_Histograms(int type=0)
 void Write_Histograms(TString outFileName)
 {
 	TFile *MyFile = new TFile(outFileName.Data(),"RECREATE"); 
-    if ( MyFile->IsOpen() ) cout << "File opened successfully" << endl; 
+    if ( MyFile->IsOpen() ) cout << endl << "File opened successfully" << endl;
+	else cout << endl << "Could not open the file! Exit..." << endl; 
     hMBcorr -> Write();
     hEBcorr -> Write();
     
@@ -329,6 +343,7 @@ void Write_Histograms(TString outFileName)
     hMCTrackPionPtY ->   Write();
     hMCTrackKaonPtY ->   Write();
 	hPdEdx -> Write();
+	hWFA -> Write();
     
     MyFile->Close();     
     
@@ -343,7 +358,7 @@ void DataTreeEventQA(int type, TChain* inChain, TString outputFileName="./hist_o
     std::cout << "Entries = " << nevents << std::endl;
     for (int i=0;i<nevents;i++)
     {
-	if ( i%1000==0) std::cout << i << "/" << nevents << std::endl;
+	if ( i%1000==0) std::cout << '\r' << i << "/" << nevents << std::flush;
 	fChain->GetEntry(i);
 	Fill_Histograms(type);
     }

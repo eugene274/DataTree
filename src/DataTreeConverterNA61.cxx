@@ -65,6 +65,10 @@ void DataTreeConverterNA61::DataTreeEvent_Init()
     {
 	DTEvent -> AddBPD();
     }
+	for (int i=0;i<nTriggers_Simple;i++)
+	{
+	DTEvent -> AddWFA();
+	}
 }
 //--------------------------------------------------------------------------------------------------
 void DataTreeConverterNA61::OutputTree_Init()
@@ -309,6 +313,8 @@ void DataTreeConverterNA61::Read_Event()
 		DTEvent -> GetWFA(i) -> SetNHits(i,WFA_NumberOfSignalHits[i]);
 		for (int j=0;j<nMaxWFAsignals;j++){
 			DTEvent -> GetWFA(i) -> SetTime(i,j,WFA_TimeStructure[i][j]);
+			// TESTING WFA signal
+			if (i == 0 && j == 10) std::cout << "WFA from TreeNA61: " << WFA_TimeStructure[i][j] << "; WFA from DataTree: " << DTEvent->GetWFA(i)->GetTime(i,j) << std::endl;;
 		}
     }
     
