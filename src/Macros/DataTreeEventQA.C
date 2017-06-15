@@ -6,6 +6,7 @@
 #include "TString.h"
 #include "TFile.h"
 #include "DataTreeEvent.h"
+#include "DataTreeConverterNA61.h"
 
 using namespace std;
 
@@ -68,7 +69,7 @@ TH2D* hPSDvsTPC;
 TH1D* hTriggerT4;
 TH1D* hVertexZcut;
 TH2D* hVertexXYcut;
-//TH1D* hWFA;
+TH1D* hWFA;
 TH1D* hNClusters[5];
 TH1D* hpT;
 TH1D* hphi;
@@ -152,7 +153,9 @@ void Init_Histograms()
 	hTriggerT4    = new TH1D("hTriggerT4","Trigger T4",2,0.,2.);
 	hVertexZcut   = new TH1D("hVertexZcut","Vertex Z with quality cut",2000,-1000.,1000.);
 	hVertexXYcut  = new TH2D("hVertexXYcut","Vertex XY with quality cut",2000,-100.,100.,2000,-100.,100.);
-	//hWFA;
+	
+    hWFA = new TH1D("hWFA","WFA beam",100,-0.0000001, 0.0000001);
+   
 	for (int i=0;i<5;i++){
 		hNClusters[i] = new TH1D(Form("hNClusters%i",i),Form("N Clusters %i",i),nbins,0.,100.);
 	}
@@ -284,7 +287,23 @@ void Fill_Histograms(int type=0)
 	}
 	hMreco -> Fill(Mult);
 	hMEcorr -> Fill(Mult, E);
+
+    //WFA 
+    int nTriggers_Simple = 6;
+    int nMaxWFAsignals = 2000;
+    float WFA_TimeStructure[nTriggers_Simple][nMaxWFAsignals];
+    int    WFA_NumberOfSignalHits[nTriggers_Simple];
+    
+    for (int i=0;i<nTriggers_Simple;i++)
+    {
+        for (int j=0;j<nMaxWFAsignals;j++){
+            hWFA -> Fill(DTEvent -> GetWFA(i) -> GetTime(i,j));
+        }
+    }
+
 }
+ 
+
 void Write_Histograms(TString outFileName)
 {
 	TFile *MyFile = new TFile(outFileName.Data(),"RECREATE"); 
@@ -343,7 +362,15 @@ void Write_Histograms(TString outFileName)
     hMCTrackPionPtY ->   Write();
     hMCTrackKaonPtY ->   Write();
 	hPdEdx -> Write();
+<<<<<<< HEAD
+
+    //for (int i = 0; i < 6; ++i)
+    //{
+    hWFA->Write();
+    //}
+=======
 	hWFA -> Write();
+>>>>>>> 3ca4cbba93cd2018b8f0fee8a49e56fcb4cc5a1e
     
     MyFile->Close();     
     

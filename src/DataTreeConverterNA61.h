@@ -242,7 +242,7 @@ private:
 
 	bool isTriggers_Combined[nRawReco][nTriggers_Combined];
 
-    double WFA_TimeStructure[nTriggers_Simple][nMaxWFAsignals];
+    float WFA_TimeStructure[nTriggers_Simple][nMaxWFAsignals];
     int    WFA_NumberOfSignalHits[nTriggers_Simple];
     
 //     float TPC_track_pT[nTPC_Tracks];
