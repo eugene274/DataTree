@@ -79,7 +79,6 @@ TH1D* hChi2NDF;
 TH1D* hCharge;
 TH1D* hp[4]; //px,py,pz,p;
 TH2D* hPdEdx;
-TH1D* hWFA;
 //TH1D* hqpVSdEdx;
 ////////////////////////
 void Init_Histograms()
@@ -362,15 +361,12 @@ void Write_Histograms(TString outFileName)
     hMCTrackPionPtY ->   Write();
     hMCTrackKaonPtY ->   Write();
 	hPdEdx -> Write();
-<<<<<<< HEAD
 
     //for (int i = 0; i < 6; ++i)
     //{
     hWFA->Write();
     //}
-=======
-	hWFA -> Write();
->>>>>>> 3ca4cbba93cd2018b8f0fee8a49e56fcb4cc5a1e
+
     
     MyFile->Close();     
     

@@ -19,11 +19,8 @@ public:
     int GetNHits(int idx){return NHits[idx];}
     double GetTime(int idx, int jdx){return TimeWFA[idx][jdx];}
 
-<<<<<<< HEAD
     void SetTime(int idx, int jdx, float fValue){TimeWFA[idx][jdx] = fValue;}
-=======
-    void SetTime(int idx, int jdx, double fValue){TimeWFA[idx][jdx] = fValue;}
->>>>>>> 3ca4cbba93cd2018b8f0fee8a49e56fcb4cc5a1e
+
     void SetNHits(int idx, int iValue){NHits[idx] = iValue;}
     
     
