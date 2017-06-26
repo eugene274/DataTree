@@ -152,8 +152,6 @@ void Init_Histograms()
 	hTriggerT4    = new TH1D("hTriggerT4","Trigger T4",2,0.,2.);
 	hVertexZcut   = new TH1D("hVertexZcut","Vertex Z with quality cut",2000,-1000.,1000.);
 	hVertexXYcut  = new TH2D("hVertexXYcut","Vertex XY with quality cut",2000,-100.,100.,2000,-100.,100.);
-	
-    hWFA = new TH1D("hWFA","WFA beam",100,-0.0000001, 0.0000001);
    
 	for (int i=0;i<5;i++){
 		hNClusters[i] = new TH1D(Form("hNClusters%i",i),Form("N Clusters %i",i),nbins,0.,100.);
@@ -201,7 +199,7 @@ void Fill_Histograms(int type=0)
 	double Ntrig = DTEvent -> GetNTriggers();
 	double NBPD  = DTEvent -> GetNBPDs();
 
-
+    //WFA
 	for (Int_t i_trigg=0;i_trigg<n_trigg;i_trigg++){
 		for (Int_t j=0;j<nMaxWFAsignals;j++){
 			hWFA->Fill(DTEvent->GetWFA(i_trigg)->GetTime(i_trigg,j));
@@ -286,19 +284,6 @@ void Fill_Histograms(int type=0)
 	}
 	hMreco -> Fill(Mult);
 	hMEcorr -> Fill(Mult, E);
-
-    //WFA 
-    int nTriggers_Simple = 6;
-    int nMaxWFAsignals = 2000;
-    float WFA_TimeStructure[nTriggers_Simple][nMaxWFAsignals];
-    int    WFA_NumberOfSignalHits[nTriggers_Simple];
-    
-    for (int i=0;i<nTriggers_Simple;i++)
-    {
-        for (int j=0;j<nMaxWFAsignals;j++){
-            hWFA -> Fill(DTEvent -> GetWFA(i) -> GetTime(i,j));
-        }
-    }
 
 }
  
